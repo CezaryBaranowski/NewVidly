@@ -1,0 +1,14 @@
+<h1>Add New Movie blahahaha</h1>
+<form>
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" id="title" class="form-control">
+  </div>
+    <div class="form-group">
+        <label for="genre">Title</label>
+        <select id="genre" class="form-control">
+          <option value=""></option>
+          <option *ngFor="let m of movies" value="{{m.id}}">{{m.name}}</option>
+        </select>
+      </div>
+</form>

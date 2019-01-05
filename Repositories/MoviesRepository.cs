@@ -17,12 +17,12 @@ namespace NewVidly.Repositories
         }
         public async Task<List<Movie>> GetAllAsync()
         {
-            return await _dbContext.Movies.ToListAsync();
+            return await _dbContext.Movies.Include(m=>m.Genre).ToListAsync();
         }
 
         public async Task<Movie> GetByIdAsync(int id)
         {
-            return await _dbContext.Movies.Where(m => m.Id == id).FirstOrDefaultAsync();
+            return await _dbContext.Movies.Include(m=>m.Genre).Where(m => m.Id == id).FirstOrDefaultAsync();
         }
     }
 }

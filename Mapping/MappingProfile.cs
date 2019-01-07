@@ -8,7 +8,19 @@ namespace NewVidly.Mapping
     {
         public MappingProfile()
         {
+            CreateMap<Movie, Movie>();
+            //Domain to API Resource
             CreateMap<Movie, MovieDto>();
+            CreateMap<Rental, RentalDto>();
+            CreateMap<Customer, CustomerDto>();
+
+            //API Resource to Domain
+            CreateMap<MovieDto, Movie>();
+            CreateMap<RentalDto, Rental>(MemberList.Source);
+            CreateMap<CustomerDto, Customer>();
+
+
+            
         }    
     }
 }

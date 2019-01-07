@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using NewVidly.Models;
+using NewVidly2.Models;
 
-namespace NewVidly.Repositories
+namespace NewVidly2.Repositories
 {
     public interface IMoviesRepository
     {

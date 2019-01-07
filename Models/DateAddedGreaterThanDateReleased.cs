@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace NewVidly.Models
+namespace NewVidly2.Models
 {
     public class DateAddedGreaterThanDateReleased : ValidationAttribute
     {

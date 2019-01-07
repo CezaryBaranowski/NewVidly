@@ -1,6 +1,6 @@
 using AutoMapper;
-using NewVidly.DTOs;
-using NewVidly.Models;
+using NewVidly2.Models;
+using NewVidly2.DTOs;
 
 namespace NewVidly.Mapping
 {
@@ -18,6 +18,8 @@ namespace NewVidly.Mapping
             CreateMap<MovieDto, Movie>();
             CreateMap<RentalDto, Rental>(MemberList.Source);
             CreateMap<CustomerDto, Customer>();
+            CreateMap<RentalDto, Rental>();
+            CreateMap<MembershipTypeDto, MembershipType>();
 
 
             

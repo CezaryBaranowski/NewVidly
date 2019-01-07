@@ -1,4 +1,4 @@
-namespace NewVidly.Services
+namespace NewVidly2.Services
 {
     public interface IRentalsService
     {

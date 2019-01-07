@@ -1,10 +1,10 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using NewVidly.Models;
+using NewVidly2.Models;
 using NewVidly2;
 
-namespace NewVidly.Persistence
+namespace NewVidly2.Persistence
 {
     public class VidlyDbContext : DbContext
     {

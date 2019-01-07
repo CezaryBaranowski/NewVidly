@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NewVidly.Persistence;
-using NewVidly.Repositories;
-using NewVidly.Services;
+using NewVidly2.Persistence;
+using NewVidly2.Repositories;
+using NewVidly2.Services;
 
 namespace NewVidly2
 {

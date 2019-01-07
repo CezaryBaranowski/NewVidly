@@ -1,8 +1,9 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using NewVidly.Models;
+using NewVidly2.Models;
+using NewVidly2.DTOs;
 
-namespace NewVidly.DTOs
+namespace NewVidly2.DTOs
 {
     public class MovieDto
     {
@@ -11,7 +12,7 @@ namespace NewVidly.DTOs
         public string Name { get; set; }
         [Required]
         public byte GenreId { get; set; }
-        public Genre Genre { get; set; }
+        public GenreDto Genre { get; set; }
         public String Description { get; set; }
         [Display(Name = "Date Released")]
         public DateTime? ReleasedDate { get; set; }

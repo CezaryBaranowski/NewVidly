@@ -1,8 +1,8 @@
-using System;
 using System.ComponentModel.DataAnnotations;
-namespace NewVidly2.Models
+
+namespace NewVidly2.DTOs
 {
-    public class Genre
+    public class GenreDto
     {
         public byte Id { get; set; } 
         [Required]

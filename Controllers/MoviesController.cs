@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using NewVidly.DTOs;
-using NewVidly.Models;
-using NewVidly.Services;
+using NewVidly2.DTOs;
+using NewVidly2.Models;
+using NewVidly2.Services;
 
 namespace NewVidly.Controllers
 {

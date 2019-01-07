@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using NewVidly.Models;
-using NewVidly.Repositories;
+using NewVidly2.Models;
+using NewVidly2.Repositories;
 
-namespace NewVidly.Services
+namespace NewVidly2.Services
 {
     public class MoviesService : IMoviesService
     {

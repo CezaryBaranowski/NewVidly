@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using NewVidly.Models;
-using NewVidly.Persistence;
+using NewVidly2.Models;
+using NewVidly2.Persistence;
 
-namespace NewVidly.Repositories
+namespace NewVidly2.Repositories
 {
     public class MoviesRepository : IMoviesRepository
     {

@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NewVidly2.Core;
+using NewVidly2.Core.Repositories;
 using NewVidly2.Persistence;
-using NewVidly2.Repositories;
 using NewVidly2.Services;
 
 namespace NewVidly2
@@ -31,6 +32,7 @@ namespace NewVidly2
             services.AddScoped<DbContext, VidlyDbContext>();
             services.AddTransient<IMoviesService, MoviesService>();
             services.AddTransient<IMoviesRepository, MoviesRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

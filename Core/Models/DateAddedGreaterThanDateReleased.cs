@@ -1,12 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace NewVidly2.Models
+namespace NewVidly2.Core.Models
 {
     public class DateAddedGreaterThanDateReleased : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            var movie = (Movie) validationContext.ObjectInstance;
+            var movie = (Movie)validationContext.ObjectInstance;
 
             var dateReleased = movie.ReleasedDate;
             var dateAdded = movie.DateAdded;

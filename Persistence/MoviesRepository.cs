@@ -1,19 +1,19 @@
-using System;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using NewVidly2.Core.Models;
+using NewVidly2.Core.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using NewVidly2.Models;
-using NewVidly2.Persistence;
 
-namespace NewVidly2.Repositories
+namespace NewVidly2.Persistence
 {
     public class MoviesRepository : IMoviesRepository
     {
 
         private readonly VidlyDbContext _dbContext;
         private readonly IMapper _mapper;
+        private int i;
         public MoviesRepository(VidlyDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
@@ -29,11 +29,11 @@ namespace NewVidly2.Repositories
 
         public async Task<List<Movie>> GetAllAsync()
         {
-            return await _dbContext.Movies.Include(m=>m.Genre).ToListAsync();
+            return await _dbContext.Movies.Include(m => m.Genre).ToListAsync();
         }
         public async Task<Movie> GetByIdAsync(int id)
         {
-            return await _dbContext.Movies.Include(m=>m.Genre).SingleOrDefaultAsync(m => m.Id == id);
+            return await _dbContext.Movies.Include(m => m.Genre).SingleOrDefaultAsync(m => m.Id == id);
         }
 
         public async Task UpdateMovieAsync(int id, Movie movie)
@@ -50,7 +50,7 @@ namespace NewVidly2.Repositories
 
         public Genre GetGenreById(byte genreId)
         {
-            return _dbContext.Genres.Where(g => g.Id == genreId).FirstOrDefault();
+            return _dbContext.Genres.FirstOrDefault(g => g.Id == genreId);
         }
     }
 }

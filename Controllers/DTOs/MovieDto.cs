@@ -1,9 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using NewVidly2.Models;
-using NewVidly2.DTOs;
 
-namespace NewVidly2.DTOs
+namespace NewVidly2.Controllers.DTOs
 {
     public class MovieDto
     {
@@ -18,6 +16,6 @@ namespace NewVidly2.DTOs
         public DateTime? ReleasedDate { get; set; }
         [Display(Name = "Number In Stock")]
         [Range(1, 20)]
-        public int NumberInStock { get; set; }   
+        public int NumberInStock { get; set; }
     }
 }

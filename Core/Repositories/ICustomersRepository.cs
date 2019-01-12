@@ -1,7 +1,7 @@
-namespace NewVidly2.Repositories
+namespace NewVidly2.Core.Repositories
 {
     public interface ICustomersRepository
     {
-         
+
     }
 }

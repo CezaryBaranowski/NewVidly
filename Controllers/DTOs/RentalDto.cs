@@ -1,8 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using NewVidly2.Models;
 
-namespace NewVidly2.DTOs
+namespace NewVidly2.Controllers.DTOs
 {
     public class RentalDto
     {

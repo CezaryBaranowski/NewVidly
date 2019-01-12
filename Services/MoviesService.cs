@@ -1,7 +1,7 @@
+using NewVidly2.Core.Models;
+using NewVidly2.Core.Repositories;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using NewVidly2.Models;
-using NewVidly2.Repositories;
 
 namespace NewVidly2.Services
 {
@@ -32,7 +32,7 @@ namespace NewVidly2.Services
             await _moviesRepository.UpdateMovieAsync(id, movie);
         }
 
-         public async Task DeleteMovieAsync(Movie movie)
+        public async Task DeleteMovieAsync(Movie movie)
         {
             await _moviesRepository.DeleteMovieAsync(movie);
         }

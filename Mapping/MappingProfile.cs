@@ -1,6 +1,6 @@
 using AutoMapper;
-using NewVidly2.Models;
-using NewVidly2.DTOs;
+using NewVidly2.Controllers.DTOs;
+using NewVidly2.Core.Models;
 
 namespace NewVidly.Mapping
 {
@@ -13,6 +13,8 @@ namespace NewVidly.Mapping
             CreateMap<Movie, MovieDto>();
             CreateMap<Rental, RentalDto>();
             CreateMap<Customer, CustomerDto>();
+            CreateMap<Rental, RentalDto>();
+            CreateMap<MembershipType, MembershipTypeDto>();
 
             //API Resource to Domain
             CreateMap<MovieDto, Movie>();
@@ -22,7 +24,7 @@ namespace NewVidly.Mapping
             CreateMap<MembershipTypeDto, MembershipType>();
 
 
-            
-        }    
+
+        }
     }
 }

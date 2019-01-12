@@ -1,6 +1,4 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-namespace NewVidly2.Models
+namespace NewVidly2.Core.Models
 {
     public class RoleName
     {

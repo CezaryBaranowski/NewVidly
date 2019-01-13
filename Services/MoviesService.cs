@@ -13,7 +13,7 @@ namespace NewVidly2.Services
     {
         IMoviesRepository _moviesRepository;
         private readonly IMapper _mapper;
-        private IUnitOfWork _unitOfWork { get; }
+        private IUnitOfWork _unitOfWork;
 
         public MoviesService(IMoviesRepository moviesRepository, IMapper mapper, IUnitOfWork unitOfWork)
         {

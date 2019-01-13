@@ -14,14 +14,12 @@ namespace NewVidly2.Controllers
     {
 
         private readonly IMoviesService _moviesService;
-        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public MoviesController(IMoviesService moviesService, IMapper mapper, IUnitOfWork unitOfWork)
+        public MoviesController(IMoviesService moviesService, IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _moviesService = moviesService;
-            _mapper = mapper;
         }
 
         [HttpGet("/api/movies")]

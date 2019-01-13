@@ -8,9 +8,8 @@ namespace NewVidly2.Core.Repositories
     {
         Task<List<Movie>> GetAllAsync();
         Task<Movie> GetByIdAsync(int id);
-        Task<Movie> SaveMovieAsync(Movie movie);
-        Task UpdateMovieAsync(int id, Movie movie);
-        Task DeleteMovieAsync(Movie movie);
+        Task AddMovieAsync(Movie movie);
+        Task DeleteMovieAsync(int id);
         Genre GetGenreById(byte genreId);
     }
 }

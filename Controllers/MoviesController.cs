@@ -28,19 +28,14 @@ namespace NewVidly2.Controllers
         public async Task<IEnumerable<MovieDto>> GetMovies()
         {
             var movies = await _moviesService.GetAllMoviesAsync();
-
-            var result = _mapper.Map<List<Movie>, List<MovieDto>>(movies);
-
-            return result;
+            return movies;
         }
 
         [HttpGet("/api/movies/{id}")]
         public async Task<MovieDto> GetMovie(int id)
         {
             var movie = await _moviesService.GetMovieAsync(id);
-
-            var result = _mapper.Map<Movie, MovieDto>(movie);
-            return result;
+            return movie;
         }
 
         [HttpPost("/api/movies")]
@@ -49,14 +44,7 @@ namespace NewVidly2.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var movie = _mapper.Map<MovieDto, Movie>(movieDto);
-            //to service
-            movie.NumberAvailable = movieDto.NumberInStock;
-            movie.DateAdded = DateTime.Now;
-            movie.Genre = _moviesService.GetGenreById(movieDto.GenreId);
-            await _moviesService.SaveMovieAsync(movie);
-
-            var result = _mapper.Map<Movie, MovieDto>(movie);
+            var result = await _moviesService.SaveMovieAsync(movieDto);
             return Ok(result);
         }
 
@@ -66,21 +54,14 @@ namespace NewVidly2.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var movie = _mapper.Map<MovieDto, Movie>(movieDto);
-
             var movieToUpdate = await _moviesService.GetMovieAsync(id);
             if (movieToUpdate == null)
                 return NotFound();
 
-            _mapper.Map(movie, movieToUpdate);
-            movieToUpdate.Genre = _moviesService.GetGenreById(movieToUpdate.GenreId);
-            movieToUpdate.DateAdded = DateTime.Now;
-
-            await _moviesService.UpdateMovieAsync(id, movie);
-
-            var updatedMovie = await _moviesService.GetMovieAsync(movie.Id);
-            var result = _mapper.Map<Movie, MovieDto>(updatedMovie);
-            return Ok(updatedMovie);
+            await _moviesService.UpdateMovieAsync(id, movieDto);
+        
+            var result = _moviesService.GetMovieAsync(id);
+            return Ok(result);
         }
 
         [HttpDelete("/api/movies/{id}")]
@@ -90,8 +71,7 @@ namespace NewVidly2.Controllers
             if (movieToDelete == null)
                 return NotFound();
 
-
-            await _moviesService.DeleteMovieAsync(movieToDelete);
+            await _moviesService.DeleteMovieAsync(movieToDelete.Id);
             return Ok(id);
         }
 

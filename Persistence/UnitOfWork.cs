@@ -10,7 +10,7 @@ namespace NewVidly2.Persistence
         {
             this._dbContext = dbContext;
         }
-        public async Task Complete()
+        public async Task CompleteAsync()
         {
             await _dbContext.SaveChangesAsync();
         }

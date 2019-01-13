@@ -5,6 +5,6 @@ namespace NewVidly2.Core
 
     public interface IUnitOfWork
     {
-        Task Complete();
+        Task CompleteAsync();
     }
 }

@@ -15,5 +15,6 @@ namespace NewVidly2.Controllers.DTOs
         [Required]
         public string CustomerName { get; set; }
         public DateTime DateRented { get; set; }
+        public DateTime? DateReturned { get; set; }
     }
 }

@@ -1,0 +1,26 @@
+<p>
+  customer-form works!
+</p>
+<h1>Register in NewVidly</h1>
+
+<form #f="ngForm" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="fullName">Full Name</label>
+    <input type="text" class="form-control" id="fullName">
+  </div>
+  <div class="form-group">
+    <label for="email">E-Mail</label>
+    <input type="email" class="form-control" id="email">
+  </div>
+  <div class="form-group">
+      <label>Birth Date</label>
+      <input name="datepicker" class="form-control" [(ngModel)] = "BirthdayDate" type="text" ngbDatepicker #d="ngbDatepicker"/>
+      <button (click)="d.toggle()">Toggle</button>
+    </div>
+</form>
+<div>
+  {{BirthdayDate | json}}
+</div>
+
+
+

@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -32,10 +33,25 @@ namespace NewVidly2
             services.AddScoped<DbContext, VidlyDbContext>();
             services.AddTransient<IMoviesService, MoviesService>();
             services.AddTransient<IMoviesRepository, MoviesRepository>();
+            services.AddTransient<ICustomersRepository, CustomersRepository>();
+            services.AddTransient<ICustomersService, CustomersService>();
+            services.AddTransient<IRentalsRepository, RentalsRepository>();
+            services.AddTransient<IRentalsService, RentalsService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            }).AddJwtBearer(options =>
+            {
+                options.Authority = "https://newvidly.eu.auth0.com/";
+                options.Audience = "https://api.newvidly.com";
+            });
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -61,6 +77,8 @@ namespace NewVidly2
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

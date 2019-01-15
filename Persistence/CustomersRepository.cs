@@ -18,7 +18,7 @@ namespace NewVidly2.Persistence
         }
         public async Task<List<Customer>> GetAllAsync()
         {
-            return await _dbContext.Customers.Include(c=>c.MemebershipType).ToListAsync();
+            return await _dbContext.Customers.Include(c=>c.MembershipType).ToListAsync();
         }
 
         public async Task<Customer> GetByIdAsync(int id)

@@ -28,7 +28,7 @@ namespace NewVidly2.Services
             var result = _mapper.Map<List<Rental>, List<RentalDto>>(rentals);
             return result;
         }
-        public async Task<RentalDto> GetMovieAsync(int id)
+        public async Task<RentalDto> GetRentalAsync(int id)
         {
             var rental = await _rentalsRepository.GetByIdAsync(id);
             var result = _mapper.Map<Rental, RentalDto>(rental);

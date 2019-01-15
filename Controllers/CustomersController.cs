@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NewVidly2.Controllers.DTOs;
 using NewVidly2.Core;
@@ -19,6 +20,7 @@ namespace NewVidly2.Controllers
         }
 
         [HttpGet("/api/customers")]
+       // [Authorize]
         public async Task<IEnumerable<CustomerDto>> GetCustomers()
         {
             var customers = await _customersService.GetAllCustomersAsync();
@@ -42,7 +44,7 @@ namespace NewVidly2.Controllers
             return Ok(result);
         }
 
-        [HttpPut("/api/movies/{id}")]
+        [HttpPut("/api/customers/{id}")]
         public async Task<IActionResult> UpdateCustomer(int id, [FromBody] CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
@@ -56,7 +58,7 @@ namespace NewVidly2.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("/api/movies/{id}")]
+        [HttpDelete("/api/customers/{id}")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {
             var customerToDelete = await _customersService.GetCustomerAsync(id);

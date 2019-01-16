@@ -24,6 +24,7 @@
     "@angular/router": "6.1.10",
     "@ng-bootstrap/ng-bootstrap": "^4.0.1",
     "@nguniversal/module-map-ngfactory-loader": "6.0.0",
+    "angular2-jwt": "^0.2.3",
     "aspnet-prerendering": "^3.0.1",
     "auth0-js": "^9.9.0",
     "bootstrap": "^4.1.3",

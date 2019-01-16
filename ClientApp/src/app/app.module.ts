@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { MovieService } from './services/movie.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -58,7 +59,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   providers: [
     MovieService,
     CustomerService,
-    RentalService
+    RentalService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

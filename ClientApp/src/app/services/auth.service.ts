@@ -12,7 +12,7 @@ export class AuthService {
   private _accessToken: string;
   private _expiresAt: number;
   userProfile: any;
-  private roles: any;
+  private roles: string[] = [];
 
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.clientID,
@@ -27,6 +27,13 @@ export class AuthService {
     this._accessToken = '';
     this._expiresAt = 0;
     this.userProfile = JSON.parse(localStorage.getItem('profile'));
+
+    let token = localStorage.getItem('token');
+    if (token) {
+      let jwtHelper = new JwtHelper();
+      let decodedToken = jwtHelper.decodeToken(token);
+      this.roles = decodedToken[AUTH_CONFIG.rolesClaim];
+    }
   }
 
   get accessToken(): string {
@@ -55,13 +62,12 @@ export class AuthService {
         console.log(authResult);
         localStorage.setItem('token', authResult.idToken);
 
-         // tslint:disable-next-line:prefer-const
-         let jwtHelper = new JwtHelper();
-      // tslint:disable-next-line:prefer-const
-      let decodedToken = jwtHelper.decodeToken(authResult.idToken);
-       this.roles = decodedToken['https://newvidly.eu.com/roles'];
+       let jwtHelper = new JwtHelper();
+       let decodedToken = jwtHelper.decodeToken(authResult.idToken);
+       this.roles = decodedToken[AUTH_CONFIG.rolesClaim];
        console.log('roles: ' + this.roles);
        console.log('dc :' + decodedToken);
+       console.log('claims :' + AUTH_CONFIG.rolesClaim);
 
         this.router.navigate(['/']);
       } else if (err) {
@@ -98,7 +104,10 @@ export class AuthService {
     console.log(this.userProfile);
   }
 
-  public isInRole(roleName) {
+  public isInRole(roleName: string) {
+    if (this.roles === undefined || this.roles.length < 1) {
+    return false;
+    }
     return this.roles.indexOf(roleName) > -1;
   }
 
@@ -119,12 +128,13 @@ export class AuthService {
     this._idToken = '';
     this._expiresAt = 0;
     // Remove isLoggedIn flag from localStorage
+    localStorage.removeItem('token');
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('profile');
-    localStorage.removeItem('token');
     localStorage.removeItem('userToken');
+    this.userProfile = null;
     // Go back to the home route
-    this.router.navigate(['/']);
+    this.router.navigate(['/logout']);
   }
 
   public isAuthenticated(): boolean {

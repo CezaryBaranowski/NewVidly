@@ -20,7 +20,7 @@ namespace NewVidly2.Controllers
         }
 
         [HttpGet("/api/customers")]
-       // [Authorize]
+        [Authorize]
         public async Task<IEnumerable<CustomerDto>> GetCustomers()
         {
             var customers = await _customersService.GetAllCustomersAsync();

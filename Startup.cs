@@ -49,8 +49,8 @@ namespace NewVidly2
 
             }).AddJwtBearer(options =>
             {
-                options.Authority = "https://newvidly.eu.auth0.com/";
-                options.Audience = "https://api.newvidly.com";
+                options.Authority = Configuration.GetValue<string>("Authority");
+                options.Audience = Configuration.GetValue<string>("Audience");
             });
 
             // In production, the Angular files will be served from this directory

@@ -1,4 +1,4 @@
-import { AuthGuardService } from './auth-guard.service';
+import { MovieInfoComponent } from './movie-info/movie-info.component';
 import { AuthService } from './services/auth.service';
 import { MovieService } from './services/movie.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,9 +24,11 @@ import { MovieViewComponent } from './movie-view/movie-view.component';
 import { CustomerService } from './services/customer.service';
 import { RentalService } from './services/rental.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { AUTH_PROVIDERS } from 'angular2-jwt/angular2-jwt';
 import { LogoutComponent } from './logout/logout.component';
+import { AdminAuthGuardService } from './services/admin-auth-guard.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { LogoutComponent } from './logout/logout.component';
     MovieFormComponent,
     CustomerFormComponent,
     CustomerListComponent,
-    MovieViewComponent
+    MovieViewComponent,
+    MovieInfoComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -60,14 +64,16 @@ import { LogoutComponent } from './logout/logout.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'logout', component: LogoutComponent, pathMatch: 'full' },
+      { path: 'user', component: UserComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'customers', component: CustomerListComponent, canActivate: [AdminAuthGuardService] },
-      { path: 'customers/new', component: CustomerFormComponent },
-      { path: 'movies', component: MovieListComponent },
+      { path: 'customers/new', component: CustomerFormComponent, canActivate: [AuthGuardService] },
+      { path: 'movies', component: MovieListComponent, canActivate: [AuthGuardService] },
+      { path: 'movies/info/:name', component: MovieInfoComponent, canActivate: [AuthGuardService] },
       { path: 'movies/new', component: MovieFormComponent, canActivate: [AdminAuthGuardService] },
       { path: 'rentals', component: RentalListComponent, canActivate: [AdminAuthGuardService] },
-      { path: 'rentals/new', component: RentalFormComponent }
+      { path: 'rentals/new', component: RentalFormComponent, canActivate: [AuthGuardService] }
     ])
   ],
   providers: [

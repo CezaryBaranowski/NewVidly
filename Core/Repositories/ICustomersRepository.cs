@@ -8,6 +8,7 @@ namespace NewVidly2.Core.Repositories
     {
         Task<List<Customer>> GetAllAsync();
         Task<Customer> GetByIdAsync(int id);
+        Task<Customer> GetByEmailAsync(string email);
         Task AddCustomerAsync(Customer customer);
         Task DeleteCustomerAsync(int id);
     }

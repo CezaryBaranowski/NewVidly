@@ -1,3 +1,26 @@
 <p>
   movie-list works!
 </p>
+<h2>List of Available Movies</h2>
+
+<p *ngIf="!movies"><em>Loading...</em></p>
+
+<table class='table table-striped' *ngIf="movies">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Genre</th>
+        <th>Date Released</th>
+        <th>Number of Available</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of movies">
+        <td>{{ m.name }}</td>
+        <td>{{ m.genre.name }}</td>
+        <td>{{ m.releasedDate | date: 'y' }}</td>
+        <td>{{ m.numberInStock }}</td>
+        <td><button class="btn btn-primary" (click) = "more(m)">More</button></td>
+      </tr>
+    </tbody>
+  </table>

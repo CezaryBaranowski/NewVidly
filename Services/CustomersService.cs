@@ -35,9 +35,17 @@ namespace NewVidly2.Services
             return result;
         }
 
+        public async Task<CustomerDto> GetCustomerByEmailAsync(string email)
+        {
+            var customer = await _customersRepository.GetByEmailAsync(email);
+            var result = _mapper.Map<Customer, CustomerDto>(customer);
+            return result;
+        }
+
         public async Task<CustomerDto> SaveCustomerAsync(CustomerDto customerDto)
         {
             var newCustomer = _mapper.Map<CustomerDto, Customer>(customerDto);
+            newCustomer.MembershipTypeId = 1;
             await _customersRepository.AddCustomerAsync(newCustomer);
             await _unitOfWork.CompleteAsync();
 

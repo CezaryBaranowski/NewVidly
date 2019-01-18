@@ -10,7 +10,11 @@ import { ToastyService } from 'ng2-toasty';
 })
 export class CustomerFormComponent implements OnInit {
 
-  BirthdayDate: any;
+  name: string;
+  membershipTypeId: number;
+  birthdayDate: string;
+  email: any;
+
   customer: {};
 
   constructor(

@@ -13,6 +13,8 @@ namespace NewVidly2.Core.Models
         [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
         public DateTime? BirthdayDate { get; set; }
+        [EmailAddress]
+        public string Email { get; set; }   
 
         public Customer(string name)
         {

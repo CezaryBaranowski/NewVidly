@@ -44,6 +44,13 @@ export class AuthService {
     return this._idToken;
   }
 
+  get email(): string {
+    let token = localStorage.getItem('token');
+    let jwtHelper = new JwtHelper();
+       let decodedToken = jwtHelper.decodeToken(token);
+       return decodedToken['email'];
+  }
+
   public login(): void {
     this.auth0.authorize({prompt: 'login'});
   }
@@ -55,9 +62,9 @@ export class AuthService {
         window.location.hash = '';
         this.localLogin(authResult);
 
-        this.getProfile((err, profile) => {
-          this.userProfile = profile;
-          });
+        // this.getProfile((err, profile) => {
+        //   this.userProfile = profile;
+        //   });
 
         console.log(authResult);
         localStorage.setItem('token', authResult.idToken);
@@ -69,7 +76,7 @@ export class AuthService {
        console.log('dc :' + decodedToken);
        console.log('claims :' + AUTH_CONFIG.rolesClaim);
 
-        this.router.navigate(['/']);
+        this.router.navigate(['/user']);
       } else if (err) {
         this.router.navigate(['/']);
         console.log(err);

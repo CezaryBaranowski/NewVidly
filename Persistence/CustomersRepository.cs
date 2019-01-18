@@ -25,6 +25,10 @@ namespace NewVidly2.Persistence
         {
             return await _dbContext.Customers.SingleOrDefaultAsync(c => c.Id == id);
         }
+        public async Task<Customer> GetByEmailAsync(string email)
+        {
+            return await _dbContext.Customers.SingleOrDefaultAsync(c => c.Email == email);
+        }
         public async Task AddCustomerAsync(Customer customer)
         {
            await _dbContext.Customers.AddAsync(customer);

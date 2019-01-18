@@ -1,3 +1,28 @@
 <p>
   rental-list works!
 </p>
+<h1>List of Rentals</h1>
+
+<p *ngIf="!rentals"><em>Loading...</em></p>
+
+<table class='table table-striped' *ngIf="rentals">
+  <thead>
+    <tr>
+      <th>Customer Id</th>
+      <th>Customer Name</th>
+      <th>Movie Name</th>
+      <th>Date Rented</th>
+      <th>Date Returned</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of rentals">
+      <td>{{ r.customerId }}</td>
+      <td>{{ r.customerName }}</td>
+      <td>{{ r.movieName }}</td>
+      <td>{{ r.dateRented | date: 'dd/MM/yyyy'}}</td>
+      <td>{{ r.dateReturned | date: 'dd/MM/yyyy' }}</td>
+      <td><button class="btn btn-primary" (click) = "finalizeRental(r)">Return</button></td>
+    </tr>
+  </tbody>
+</table>

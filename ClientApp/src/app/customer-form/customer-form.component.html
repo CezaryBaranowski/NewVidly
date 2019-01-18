@@ -6,15 +6,15 @@
 <form #f="ngForm" (ngSubmit)="submit()">
   <div class="form-group">
     <label for="fullName">Full Name</label>
-    <input type="text" class="form-control" id="fullName">
+    <input type="text" [(ngModel)] = "name" class="form-control" id="fullName">
   </div>
   <div class="form-group">
     <label for="email">E-Mail</label>
-    <input type="email" class="form-control" id="email">
+    <input type="email"  class="form-control" id="email">
   </div>
   <div class="form-group">
       <label>Birth Date</label>
-      <input name="datepicker" class="form-control" [(ngModel)] = "BirthdayDate" type="text" ngbDatepicker #d="ngbDatepicker"/>
+      <input name="datepicker" class="form-control" [(ngModel)] = "birthdayDate" type="text" ngbDatepicker #d="ngbDatepicker"/>
       <button (click)="d.toggle()">Toggle</button>
     </div>
 </form>

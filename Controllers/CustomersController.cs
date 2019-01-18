@@ -34,11 +34,18 @@ namespace NewVidly2.Controllers
             return customer;
         }
 
+         [HttpGet("/api/customers/mail/{email}")]
+        public async Task<CustomerDto> GetCustomerByEmailAsync(string email)
+        {
+            var customer = await _customersService.GetCustomerByEmailAsync(email);
+            return customer;
+        }
+
         [HttpPost("/api/customers")]
         public async Task<IActionResult> CreateCustomer([FromBody] CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+                return BadRequest("Cos nie halo");
 
             var result = await _customersService.SaveCustomerAsync(customerDto);
             return Ok(result);
@@ -55,6 +62,20 @@ namespace NewVidly2.Controllers
                 return NotFound();
 
             var result = await _customersService.UpdateCustomerAsync(id, customerDto);
+            return Ok(result);
+        }
+
+        [HttpPut("/api/customers/mail/{email}")]
+        public async Task<IActionResult> UpdateCustomer(string email, [FromBody] CustomerDto customerDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var customerToUpdate = await _customersService.GetCustomerByEmailAsync(email);
+            if (customerToUpdate == null)
+                return NotFound();
+
+            var result = await _customersService.UpdateCustomerAsync(customerToUpdate.Id, customerDto);
             return Ok(result);
         }
 

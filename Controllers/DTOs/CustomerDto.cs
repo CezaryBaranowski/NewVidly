@@ -11,6 +11,7 @@ namespace NewVidly2.Controllers.DTOs
         public String Name { get; set; }
         public MembershipTypeDto MembershipType { get; set; }
         public byte MembershipTypeId { get; set; }
-        public DateTime? BirthdayDate { get; set; }
+        public String BirthdayDate { get; set; }
+        public string Email { get; set; }   
     }
 }

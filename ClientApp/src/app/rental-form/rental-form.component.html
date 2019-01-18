@@ -1,14 +1,13 @@
-<h1>Add New Movie blahahaha</h1>
-<form>
-  <!-- <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" id="title" class="form-control">
-  </div> -->
-    <div class="form-group">
+<h2 style="margin:0px,0px,10px,0px">Select Movie for Rental</h2>
+<form ngNativeValidate (ngSubmit)="submit()">
+    <div style="margin: 10px,0px,0px,0px" class="form-group">
         <label for="title">Title</label>
-        <select id="title" class="form-control" name="name" (change) = "onTitleChange()" [(ngModel)] = "selectedMovie">
+        <select required id="title" class="form-control" name="name" (change) = "onTitleChange()" [(ngModel)] = "selectedMovie">
           <option value=""></option>
-          <option *ngFor="let m of movies" value="{{m.name}}">{{m.name}}</option>
+          <option *ngFor="let m of movies" value="{{m.id}}">{{m.name}}</option>
         </select>
+      </div>
+      <div>
+          <button class="btn btn-primary">Rent</button>
       </div>
 </form>
